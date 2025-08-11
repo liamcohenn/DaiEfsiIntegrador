@@ -7,7 +7,7 @@
     "start": "nodemon ./src/server.js",
     "dev": "nodemon index.js"
   },
-  "author": "mateo",
+  "author": "Liam",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
