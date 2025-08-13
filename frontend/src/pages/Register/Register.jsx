@@ -37,7 +37,7 @@ const Register = () => {
         e.preventDefault();
         try {
             await authService.register(formData); 
-            const loged = authService.login(formData.username, formData.password); // Automatically log in after registration
+            const loged = authService.login(formData.username, formData.password); 
             setUser(loged);
 
             navigate("/home");
@@ -71,7 +71,7 @@ const Register = () => {
             required
         />
 
-        <label htmlFor="username">Nombre de usuario</label>
+        <label htmlFor="username">Mail</label>
         <input
             type="text"
             id="username"
