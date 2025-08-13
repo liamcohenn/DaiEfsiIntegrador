@@ -57,11 +57,11 @@ export default class EventService {
                 body: { success: false, message: "La asistencia máxima no puede superar la capacidad del lugar." }
             };
         }
-        const exists = await this.eventRepository.existsEvent(name, start_date, id_event_location);
+        const exists = await this.eventRepository.existsEventSameDayAndLocation(start_date, id_event_location);
         if (exists) {
             return {
                 status: 400,
-                body: { success: false, message: "Ya existe un evento en esa fecha y lugar" }
+                body: { success: false, message: "Ya existe un evento en ese lugar para ese día" }
             };
         }
 
@@ -119,11 +119,11 @@ export default class EventService {
                 body: { success: false, message: "La asistencia máxima no puede superar la capacidad del lugar." }
             };
         }
-        const exists = await this.eventRepository.existsEvent(name, start_date, id_event_location);
+        const exists = await this.eventRepository.existsEventSameDayAndLocationExcludingId(id, start_date, id_event_location);
         if (exists) {
             return {
                 status: 400,
-                body: { success: false, message: "Ya existe un evento en esa fecha y lugar" }
+                body: { success: false, message: "Ya existe un evento en ese lugar para ese día" }
             };
         }
 
@@ -213,7 +213,7 @@ export default class EventService {
         if (isTodayOrPast(event.start_date)) {
             return {
                 status: 400,
-                body: { success: false, message: "No se puede inscribir a un evento que ya ha comenzado o es hoy" }
+                body: { success: false, message: "El evento ya termino" }
             };
         }
         const enrolledUsers = await this.eventRepository.getEnrrolledUsersInEventByIdAsync(eventId);
@@ -238,6 +238,52 @@ export default class EventService {
                 body: { success: false, message: "No se pudo eliminar la inscripción" }
             };
         }
+
+    }
+
+    userEnrolledEvents = async(userId) =>{
+        const result = await this.eventRepository.userEnrolledEvents(userId)
+        if (!result) {
+            return {
+                status: 500,
+                body: { success: false, message: "Error al buscar eventos del usuario." }
+            };
+        }
+    
+        if (result.length === 0) {
+            return {
+                status: 200,
+                body: { success: true, message: "No estás inscripto a ningún evento.", events: [] }
+            };
+        }
+    
+        return {
+            status: 200,
+            body: { success: true, message: "Eventos encontrados.", events: result }
+        };
+
+    }
+
+    userCreatedEvents = async(userId) =>{
+        const result = await this.eventRepository.userCreatedEvents(userId)
+        if (!result) {
+            return {
+                status: 500,
+                body: { success: false, message: "Error al buscar eventos creados por el usuario." }
+            };
+        }
+
+        if (result.length === 0) {
+            return {
+                status: 200,
+                body: { success: true, message: "No tenés eventos creados.", events: [] }
+            };
+        }
+
+        return {
+            status: 200,
+            body: { success: true, message: "Eventos creados encontrados.", events: result }
+        };
 
     }
 }

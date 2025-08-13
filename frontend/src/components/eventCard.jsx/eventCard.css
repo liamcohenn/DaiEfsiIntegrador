@@ -1,0 +1,115 @@
+/* Contenedor principal de la tarjeta */
+.event-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Título del evento */
+.event-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Descripción */
+.event-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Información general */
+.event-info {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Estado de inscripción */
+.event-status {
+  font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.event-status.open {
+  background-color: #d4f7d0;
+  color: #217a00;
+}
+
+.event-status.closed {
+  background-color: #ffd6d6;
+  color: #a30000;
+}
+
+/* Botones de acciones (editar, eliminar) */
+.event-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.edit-btn:hover {
+  color: #6a00ff;
+  transform: scale(1.1);
+}
+
+.delete-btn:hover {
+  color: #ff2e2e;
+  transform: scale(1.1);
+}
+
+/* Botón "Ver más" */
+.event-card button {
+  margin-top: auto;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #6a00ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.event-card button:hover {
+  background-color: #5000c9;
+}
+
+/* Adaptabilidad móvil */
+@media (max-width: 500px) {
+  .event-card {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .event-title {
+    font-size: 1.2rem;
+  }
+}

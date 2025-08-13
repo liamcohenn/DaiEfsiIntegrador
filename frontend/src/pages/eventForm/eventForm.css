@@ -1,0 +1,143 @@
+.event-form-page {
+  max-width: 840px;
+  margin: 24px auto;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+  padding: 26px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+
+.event-form-page h1 {
+  margin: 0 0 14px 0;
+  font-size: 1.7rem;
+  color: #222;
+}
+
+.error-text {
+  margin: 8px 0 14px 0;
+  color: #b00020;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.event-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 18px;
+}
+
+.event-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.event-form input[type="text"],
+.event-form input[type="number"],
+.event-form input[type="datetime-local"],
+.event-form select,
+.event-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  background: #fff;
+  color: #222;
+  font-size: 0.98rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.event-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.event-form input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #6a00ff;
+}
+
+.event-form input[type="text"]:focus,
+.event-form input[type="number"]:focus,
+.event-form input[type="datetime-local"]:focus,
+.event-form select:focus,
+.event-form textarea:focus {
+  border-color: #6a00ff;
+  box-shadow: 0 0 0 4px rgba(106,0,255,0.12);
+}
+
+.event-form input:disabled,
+.event-form select:disabled,
+.event-form textarea:disabled {
+  background: #f7f7f7;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.button-group {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.button-group button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+}
+
+.button-group button[type="submit"] {
+  background-color: #6a00ff;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(106,0,255,0.25);
+}
+
+.button-group button[type="submit"]:hover {
+  background-color: #5000c9;
+  transform: translateY(-1px);
+}
+
+.btn-delete {
+  background-color: #ff4d4d;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(255,77,77,0.25);
+}
+
+.btn-delete:hover {
+  background-color: #cc0000;
+  transform: translateY(-1px);
+}
+
+.button-group button:disabled,
+.btn-delete:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 780px) {
+  .event-form {
+    grid-template-columns: 1fr;
+  }
+  .button-group {
+    justify-content: stretch;
+  }
+  .button-group button {
+    width: 100%;
+  }
+  .event-form-page {
+    margin: 16px;
+    padding: 20px;
+  }
+}

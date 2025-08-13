@@ -1,0 +1,34 @@
+.input-text-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-text {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-text:focus {
+  border-color: #6a00ff;
+  box-shadow: 0 0 6px rgba(106, 0, 255, 0.3);
+}
+
+.input-text::placeholder {
+  color: #999;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 500px) {
+  .input-text {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+  }
+}
